@@ -1,5 +1,4 @@
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
-
 import { Box } from 'native-base';
 
 const TabBarComponent = ({ navigation }: BottomTabBarProps) => {

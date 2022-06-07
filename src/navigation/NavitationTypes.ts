@@ -4,6 +4,4 @@ export type RootTabParams = {
     HomeStack: NavigatorScreenParams<HomeStackParams>;
 }
 
-export type HomeStackParams = {
-
-}
+export type HomeStackParams = {}

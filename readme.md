@@ -4,7 +4,7 @@ Mobile app for PetProject
 
 ## Installation
 
-This project uses Expo.
+This project uses [Expo](https://expo.dev/).
 
 Expo Slug: `PetProject`
 

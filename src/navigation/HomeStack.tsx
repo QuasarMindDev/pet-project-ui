@@ -1,7 +1,4 @@
-import {
-  createNativeStackNavigator,
-  NativeStackNavigationOptions
-} from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import screenOptionsHook from '~hooks/screenOptionsHook';
 import HomeScreen from '~screens/HomeScreen';
 
