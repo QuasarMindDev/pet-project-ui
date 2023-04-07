@@ -5,21 +5,21 @@ import * as AuthSession from 'expo-auth-session';
 import { Alert, Platform } from 'react-native';
 import { useEffect, useState } from 'react';
 import jwtDecode from 'jwt-decode';
+import { makeRedirectUri } from 'expo-auth-session';
+// @ts-ignore
+import { AUTH_CLIENT_ID, AUTH_ENDPOINT } from '@env';
 
-const auth0ClientId = 'R3D4R5GHCrYzjTFOD45yYra8C4mp9Nsj';
-const authorizationEndpoint = 'https://dev-9fo3hhwn.us.auth0.com/authorize';
-
-const useProxy = Platform.select({ web: false, default: true });
-const redirectUri = AuthSession.makeRedirectUri({ useProxy });
+const auth0ClientId = AUTH_CLIENT_ID;
+const authorizationEndpoint = AUTH_ENDPOINT;
 
 const LoginScreen = () => {
   const [session, setSession] = useRecoilState(sessionState);
 
-  console.log(`Redirect URL: ${redirectUri}`);
-
   const [request, result, promptAsync] = AuthSession.useAuthRequest(
     {
-      redirectUri,
+      redirectUri: makeRedirectUri({
+        scheme: 'pet-project'
+      }),
       clientId: auth0ClientId,
       responseType: 'id_token',
       scopes: ['openid', 'profile', 'email'],
@@ -29,7 +29,6 @@ const LoginScreen = () => {
     },
     { authorizationEndpoint }
   );
-  console.log('Result: ', result);
 
   useEffect(() => {
     if (result) {
@@ -58,7 +57,7 @@ const LoginScreen = () => {
   return (
     <View px={5} bg="white">
       <Box>Please Log In</Box>
-      <Button onPress={() => promptAsync({ useProxy })}>Open Auth0</Button>
+      <Button onPress={() => promptAsync()}>Open Auth0</Button>
     </View>
   );
 };
