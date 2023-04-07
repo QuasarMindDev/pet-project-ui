@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { RootTabParams } from './NavitationTypes';
 import TabBarComponent from '~components/navigation/TabBarComponent';
 import HomeStack from './HomeStack';
+import SetupStack from './AccountSetupStack';
 
 const Tab = createBottomTabNavigator<RootTabParams>();
 
@@ -14,6 +15,7 @@ const RootNavigationContainer = () => {
         screenOptions={{ headerShown: false }}
       >
         <Tab.Screen name="HomeStack" component={HomeStack} />
+        <Tab.Screen name="SetupStack" component={SetupStack} />
       </Tab.Navigator>
     </NavigationContainer>
   );
